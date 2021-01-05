@@ -1,6 +1,7 @@
 cook_book = {}
 cook = {}
 cook_list = []
+sort_dict = {}  # for testing
 
 with open('recipes.txt', 'r') as file:
     text = file.readlines()
@@ -17,6 +18,44 @@ for line in text:
         cook_list.append(cook)
 
 
-for x, y in cook_book.items():
-    print(x, y)
+def get_shop_list_by_dishes(dishes, person_count):
+    all_sort = {}
+    for value in dishes:
+        if value in cook_book.keys():
+            for title in cook_book[value]:
+                name = title.pop('ingredient_name')
+                if name in all_sort.keys():
+                    title['quantity'] = int(title['quantity']) * person_count + int(all_sort[name]['quantity'])
+                    all_sort[name] = title
+                    sort_dict[name] = title
+                else:
+                    title['quantity'] = int(title['quantity']) * person_count
+                    all_sort[name] = title
+                    sort_dict[name] = title
+        else:
+            print(value, ' not in cook_book')
 
+    return print(all_sort)
+
+
+def print_shop_list(some_dict):
+    for y, z in some_dict.items():
+        print(f'{y} : {z}')
+
+
+def get_contents(some_dict):
+    d = []
+    for keys, items in some_dict.items():
+        d.append(keys)
+    print("Contents:", *d, sep=', ')
+
+# testing area, remove '#':
+
+# task-1
+# for x, y in cook_book.items():
+#     print(x, y)
+
+# task-2
+# get_contents(cook_book)
+# get_shop_list_by_dishes(['Шарлотка', 'Морковный пирог', 'Кекс'], 3)
+# print_shop_list(sort_dict)
