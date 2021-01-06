@@ -44,18 +44,18 @@ def print_shop_list(some_dict):
 
 
 def get_contents(some_dict):
-    d = []
+    out = []
     for keys, items in some_dict.items():
-        d.append(keys)
-    print("Contents:", *d, sep=', ')
+        out.append(keys)
+    print("Contents:", *out, sep=', ')
 
 # testing area, remove '#':
 
-# task-1
-# for x, y in cook_book.items():
-#     print(x, y)
+# """ task-1 """
+for x, y in cook_book.items():
+    print(x, y)
 
-# task-2
+# """ task-2 """
 # get_contents(cook_book)
 # get_shop_list_by_dishes(['Шарлотка', 'Морковный пирог', 'Кекс'], 3)
 # print_shop_list(sort_dict)
