@@ -8,7 +8,7 @@ with open('recipes.txt', 'r') as file:
 
 for line in text:
     line = line.rstrip().split()
-    if '|' not in line and [a for a in line if a.isalpha() is True]:
+    if '|' not in line and [a for a in line if a.isdigit() is False]:
         cook_list = []
         cook_book[str(' '.join(line))] = cook_list
 
